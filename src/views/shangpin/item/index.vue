@@ -69,6 +69,8 @@
 <script lang="ts" setup>
 import { onMounted, ref } from 'vue';
 import axios from 'axios';
+import { ElMessage } from 'element-plus';
+import { axiosRequest } from '~/src/service/request';
 const queryInput = ref();
 const tableData = ref();
 const multipleSelection = ref([]);
@@ -87,6 +89,11 @@ onMounted(() => {
     tableData.value = resp.data;
   });
 });
+const Refreshtable = () => {
+  axios.get('/api/item/Select').then(resp => {
+    tableData.value = resp.data;
+  });
+};
 const handleSelectionChange = val => {
   multipleSelection.value = val;
   console.log(val);
@@ -100,7 +107,16 @@ const handleEdit = (row: any) => {
   tableForm.value = row;
 };
 const handleDelete = ({ id }: any) => {
-  console.log(id);
+  axiosRequest.post('/item/deleteById', { id }).then(resp => {
+    ElMessage({
+      message: '删除成功',
+      type: 'success'
+    });
+    Refreshtable();
+  });
+  // axios.post('/api/item/deleteById', id).then(resp => {
+  //   console.log(resp);
+  // });
 };
 const dialogConfirm = () => {
   dialogFormVisible.value = false;

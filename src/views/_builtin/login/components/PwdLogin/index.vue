@@ -51,7 +51,7 @@ const formRef = ref<HTMLElement & FormInst>();
 
 const model = reactive({
   userName: '3400223562@qq.com',
-  password: 'qq123456'
+  password: 'qq123456.'
 });
 
 const rules: FormRules = {
@@ -64,24 +64,23 @@ async function handleSubmit() {
   await formRef.value?.validate();
 
   const { userName, password } = model;
-	//axiosLogin(userName,password);
+  // axiosLogin(userName,password);
 
   login(userName, password);
-/*	axios.post('/url-pattern/user/login',{
+  /*	axios.post('/url-pattern/user/login',{
 		userName:userName,
 		password:password
 	}).then(res=>{
 		router.push('http://localhost:3200/slw/jc');
 	}).catch(error=>{
 		alert(error.res.data.error);
-	})*/
-
+	}) */
 }
 
 function handleLoginOtherAccount(param: { userName: string; password: string }) {
   const { userName, password } = param;
-	//axiosLogin(userName,password);
-	login(userName, password);
+  // axiosLogin(userName,password);
+  login(userName, password);
 }
 </script>
 

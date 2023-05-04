@@ -11,4 +11,4 @@ export const secondRequest = createRequest({ baseURL: isHttpProxy ? secondUrlPat
 
 export const mockRequest = createRequest({ baseURL: '/mock' });
 
-export const axiosRequest = createRequest ({ baseURL: '/api' });
+export const axiosRequest = createRequest({ baseURL: '/api' });

@@ -1,5 +1,4 @@
-import {/*axiosRequest*/ mockRequest} from '../request';
-import {axiosRequest} from "../request";
+import { /* axiosRequest */ mockRequest, axiosRequest } from '../request';
 
 /**
  * 获取验证码
@@ -16,15 +15,14 @@ export function fetchSmsCode(phone: string) {
  * @param password - 密码
  */
 export function fetchLogin(userName: string, password: string) {
-	return axiosRequest.post<ApiAuth.Token>('/user/login',{ userName, password });
-	//return mockRequest.post<ApiAuth.Token>('/login', { userName, password });
-
+  return axiosRequest.post<ApiAuth.Token>('/user/login', { userName, password });
+  // return mockRequest.post<ApiAuth.Token>('/login', { userName, password });
 }
 
 /** 获取用户信息 */
 export function fetchUserInfo() {
-	return axiosRequest.get<ApiAuth.UserInfo>('/user/getUserInfo')
-	//return mockRequest.get<ApiAuth.UserInfo>('/getUserInfo');
+  return axiosRequest.get<ApiAuth.UserInfo>('/user/getUserInfo');
+  // return mockRequest.get<ApiAuth.UserInfo>('/getUserInfo');
 }
 
 /**
@@ -33,13 +31,12 @@ export function fetchUserInfo() {
  * @description 后端根据用户id查询到对应的角色类型，并将路由筛选出对应角色的路由数据返回前端
  */
 export function fetchUserRoutes(userId: string) {
-
-	return axiosRequest.post<ApiRoute.Route>('/user/getUserRoutes', { userId });
+  return axiosRequest.post<ApiRoute.Route>('/user/getUserRoutes', { userId });
 }
 type RoleType = keyof typeof import('@/enum').EnumUserRole;
 
 export function fetchUserRoutesA(userRole: RoleType) {
-	return mockRequest.post<ApiRoute.Route>('/getUserRoutesA', { userRole });
+  return mockRequest.post<ApiRoute.Route>('/getUserRoutesA', { userRole });
 }
 
 /**

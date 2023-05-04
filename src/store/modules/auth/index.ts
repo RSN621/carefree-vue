@@ -110,6 +110,7 @@ export const useAuthStore = defineStore('auth-store', {
      */
     async login(userName: string, password: string) {
       this.loginLoading = true;
+
       const { data } = await fetchLogin(userName, password);
       if (data) {
         await this.handleActionAfterLogin(data);
